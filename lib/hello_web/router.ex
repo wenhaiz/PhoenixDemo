@@ -2,12 +2,13 @@ defmodule HelloWeb.Router do
   use HelloWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html","text"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {HelloWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug HelloWeb.Plugs.Locale, "en"
   end
 
   pipeline :api do
@@ -18,11 +19,18 @@ defmodule HelloWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/hello", HelloController, :index
+    get "/hello/:messenger", HelloController, :show
+    resources "/users", UserController
+    get "/wenhai", WenHaiController, :index
   end
 
   # Other scopes may use custom stacks.
   # scope "/api", HelloWeb do
   #   pipe_through :api
+  #   scope "/article", ArticalController do
+  #     resources "/comment", CommentController
+  #   end
   # end
 
   # Enables LiveDashboard only for development
