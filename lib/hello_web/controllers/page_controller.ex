@@ -12,11 +12,11 @@ defmodule HelloWeb.PageController do
     # |> put_resp_content_type("text/plain")
     # |> send_resp(200,"hell")
 
-    conn
-    |> put_flash(:info, "Welcome to Phoenix, from flash info!")
-    |> put_flash(:error, "Let's pretend we have an error.")
-    |> render("index.html")
+    # conn
+    # |> put_flash(:info, "Welcome to Phoenix, from flash info!")
+    # |> put_flash(:error, "Let's pretend we have an error.")
+    # |> render("index.html")
 
-
+    render(conn,"index.html")
   end
 end
