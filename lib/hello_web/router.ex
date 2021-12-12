@@ -23,6 +23,7 @@ defmodule HelloWeb.Router do
     get "/hello/:messenger", HelloController, :show
     resources "/users", UserController
     get "/wenhai", WenHaiController, :index
+    resources "/products", ProductController
   end
 
   # Other scopes may use custom stacks.
